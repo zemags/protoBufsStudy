@@ -8,7 +8,7 @@ message Person {
     // tags from 16 to 2047 = 2 bytes
     int32 age = 1; // 1, 2 ,3 .. it's a tags, very important
     string first_name = 2;
-    string last_name = 2;
+    string last_name = 3;
     bytes small_picture = 4;
     bool is_profile_verified = 5;
     float height = 6;
@@ -32,5 +32,5 @@ message Person {
 message Date {
     int32 year = 1;
     int32 month = 2;
-    int 32 day = 3;
+    int32 day = 3;
 }

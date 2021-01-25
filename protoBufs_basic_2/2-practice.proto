@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-import "protoBufs_basic/2-practice-imports.proto";
+import "protoBufs_basic_2/2-practice-imports.proto";
 
 package address;
 
@@ -11,7 +11,7 @@ message City {
 
     message Building {
         string building_name = 1;
-        int8 building_number = 2;
+        int32 building_number = 2;
         street.Street street_full_name = 3;
     }
 
