@@ -5,15 +5,50 @@ import (
 	"io/ioutil"
 	"log"
 
+	complexpb "github.com/zemags/protoBufs_golang_1/src/complex"
+	enumpb "github.com/zemags/protoBufs_golang_1/src/enum_example"
 	simplepb "github.com/zemags/protoBufs_golang_1/src/simple"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
 func main() {
-	sm := doSimple()
-	readWriteFile(sm)
-	readWriteJSON(sm)
+	// sm := doSimple()
+	// readWriteFile(sm)
+	// readWriteJSON(sm)
+
+	// doEnum()
+
+	doComplex()
+}
+
+func doComplex() {
+	cm := complexpb.ComplexMessage{
+		OneDummy: &complexpb.DummyMessage{
+			Id:   1,
+			Name: "First message",
+		},
+		MultipleDummy: []*complexpb.DummyMessage{
+			&complexpb.DummyMessage{
+				Id:   2,
+				Name: "Second message",
+			},
+			&complexpb.DummyMessage{
+				Id:   3,
+				Name: "Third message",
+			},
+		},
+	}
+
+	fmt.Println(cm)
+}
+
+func doEnum() {
+	ep := enumpb.EnumMessage{
+		Id:           12345,
+		DayOfTheWeek: enumpb.DayOfTheWeek_monday,
+	}
+	fmt.Println(ep)
 }
 
 func toJSON(pb proto.Message) string {
