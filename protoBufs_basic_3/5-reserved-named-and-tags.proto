@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+//for timestamp
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+message PersonInfo {  // CamelCase for message name
+    int32 id = 1;
+    reserved 2; // save value for future use
+    reserved "first_name"; // save value for future use
+
+    string OBSOLETE_second_name = 3; // reserved as above first_name, just add OBSOLETE_
+
+    reserved 4, 5, 6 to 11; //reserved tags
+    reserved "foo", "bar"; //reserved names, NEVER REMOVE RESERVED TAGS
+
+    enum DayOfWeek {
+        UNKNOWN = 0;  // use always for default value UNKNOWN = 0
+        MONDAY = 1; // for enums ALWAYS! CAPITAL case line MONDAY not monday
+    }
+
+    // only one field can have a value, on read all values will be null except last one
+    oneof exmaple_oneof {
+        string my_string = 12;
+        bool my_bool = 13;
+    }
+
+    map<string, string> result = 14;
+
+    google.protobuf.Timestamp my_timestamp = 15; // Timestamp fields is seconds and nanoseconds
+
+    // range or duration
+    google.protobuf.Timestamp msg_date = 16;
+    google.protobuf.Duration validaty = 17;
+
+}
