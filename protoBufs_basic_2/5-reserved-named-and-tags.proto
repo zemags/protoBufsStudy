@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+message Person {
+    int32 id = 1;
+    reserved 2; // save value for future use
+    reserved "first_name"; // save value for future use
+
+    string OBSOLETE_second_name = 3; // reserved as above first_name, just add OBSOLETE_
+
+    reserved 4, 5, 9 to 11; //reserved tags
+    reserved "foo", "bar"; //reserved names, NEVER REMOVE RESERVED TAGS
+
+    enum DayOfWeek {
+        UNKNOWN = 0;  // use always for default value UNKNOWN = 0
+        MONDAY = 1;
+    }
+}
